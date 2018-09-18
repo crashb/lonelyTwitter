@@ -38,10 +38,18 @@ public class LonelyTwitterActivity extends Activity {
 
 			public void onClick(View v) {
 				setResult(RESULT_OK);
-				String text = bodyText.getText().toString();
-				saveInFile(text, new Date(System.currentTimeMillis()));
-				finish();
+				String tweetText = bodyText.getText().toString() + "\n";
+				Tweet tweet = new Tweet(tweetText);
 
+				// DEMO - add a happy mood and a sad mood to the tweet
+				HappyMood mood1 = new HappyMood();
+				SadMood mood2 = new SadMood();
+                tweet.addMood(mood1);
+                tweet.addMood(mood2);
+				String textToShow = tweetText + tweet.getMoods();
+
+				saveInFile(textToShow, new Date(System.currentTimeMillis()));
+				finish();
 			}
 		});
 	}
