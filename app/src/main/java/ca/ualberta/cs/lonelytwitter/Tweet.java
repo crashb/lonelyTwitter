@@ -27,4 +27,8 @@ public class Tweet {
         }
         return moodString;
     }
+
+    public String toString() {
+        return getText();
+    }
 }
