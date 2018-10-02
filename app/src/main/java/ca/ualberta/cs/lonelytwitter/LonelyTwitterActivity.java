@@ -1,3 +1,12 @@
+/*
+ * LonelyTwitterActivity class runs the main application activity
+ *
+ * @author: nphoskin
+ * @since   1.0
+ * @see     java.io
+ *
+ */
+
 package ca.ualberta.cs.lonelytwitter;
 
 import java.io.BufferedReader;
@@ -10,7 +19,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Date;
 
 import android.app.Activity;
 import android.content.Context;
@@ -24,6 +32,9 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * LonelyTwitterActivity class is the main activity run by the Android app
+ */
 public class LonelyTwitterActivity extends Activity {
 
 	private static final String FILENAME = "file.sav";
@@ -67,6 +78,9 @@ public class LonelyTwitterActivity extends Activity {
         });
 	}
 
+	/**
+	 * Start of the application
+	 */
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -76,6 +90,9 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList.setAdapter(adapter);
 	}
 
+	/**
+	 * Load tweets from file
+	 */
 	private void loadFromFile() {
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
@@ -90,7 +107,11 @@ public class LonelyTwitterActivity extends Activity {
 			tweetList = new ArrayList<Tweet>();
 		}
 	}
-	
+
+	/**
+	 * Save the list in a file
+	 * @throws FileNotFoundException
+	 */
 	private void saveInFile() {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,
