@@ -1,5 +1,6 @@
 package ca.ualberta.cs.lonelytwitter;
 
+// lab 8: fixed two unnecessary imports
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,10 +10,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Date;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,8 +24,11 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class LonelyTwitterActivity extends Activity {
-	private LonelyTwitterActivity activity = this;
+    // lab 8: made declaration final
+	private final LonelyTwitterActivity activity = this;
 
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
@@ -74,11 +76,12 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 				Intent intent = new Intent(activity, EditTweetActivity.class);
+				NormalTweet clickedTweet = (NormalTweet) adapterView.getItemAtPosition(i);
+				String tweetText = clickedTweet.getMessage();
+				intent.putExtra(EXTRA_MESSAGE, tweetText);
 				startActivity(intent);
 			}
 		});
-
-
 	}
 
 	@Override

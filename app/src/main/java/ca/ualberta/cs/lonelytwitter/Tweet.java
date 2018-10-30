@@ -21,7 +21,7 @@ public abstract class Tweet implements Tweetable {
         return message;
     }
 
-    public abstract Boolean isImportant();
+    // lab 8: removed unused declaration
 
 
     public void setMessage(String message) throws TweetTooLongException {
